@@ -55,14 +55,14 @@ function shareMeme(event) {
         navigator.share({
             title: 'Check out this PlatWithHat meme! 🦆💪',
             text: 'Found this awesome meme on PlatWithHat! #PLATWHAT #Solana',
-            url: memeImg
+            url: window.location.origin + '/' + memeImg
         })
         .catch(error => console.log('Error sharing:', error));
     } else {
         // Fallback for browsers that don't support Web Share API
         const dummy = document.createElement('textarea');
         document.body.appendChild(dummy);
-        dummy.value = memeImg;
+        dummy.value = window.location.origin + '/' + memeImg;
         dummy.select();
         document.execCommand('copy');
         document.body.removeChild(dummy);
@@ -76,5 +76,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareButtons = document.querySelectorAll('.share-btn');
     shareButtons.forEach(button => {
         button.addEventListener('click', shareMeme);
+    });
+});
+
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuBtn.addEventListener('click', function() {
+        navContainer.classList.toggle('show');
+        menuBtn.textContent = navContainer.classList.contains('show') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('nav')) {
+            navContainer.classList.remove('show');
+            menuBtn.textContent = '☰';
+        }
+    });
+
+    // Prevent menu from closing when clicking inside
+    navContainer.addEventListener('click', function(event) {
+        event.stopPropagation();
     });
 }); 
