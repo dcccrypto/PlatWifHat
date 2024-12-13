@@ -1,39 +1,28 @@
 // Contract address functionality
 function copyContractAddress() {
     const address = "3JiUb9kVFstMaXjooqXuynsfQfyTwdoMmB6bvLZGmoon";
+    const btn = event.currentTarget;
+    const originalText = btn.textContent;
+    
     navigator.clipboard.writeText(address)
         .then(() => {
-            // Find the clicked button
-            const clickedBtn = event.currentTarget;
-            const originalText = clickedBtn.textContent;
-            
-            // Update button text
-            clickedBtn.textContent = 'Copied! ✅';
-            
-            // Reset button text after 2 seconds
+            btn.textContent = 'Copied! ✅';
+            btn.classList.add('copied');
             setTimeout(() => {
-                clickedBtn.textContent = originalText;
+                btn.textContent = originalText;
+                btn.classList.remove('copied');
             }, 2000);
         })
         .catch(err => {
             console.error('Failed to copy:', err);
-            // Show error feedback
-            const clickedBtn = event.currentTarget;
-            clickedBtn.textContent = 'Failed to copy ❌';
+            btn.textContent = 'Failed to copy ❌';
+            btn.classList.add('failed');
             setTimeout(() => {
-                clickedBtn.textContent = originalText;
+                btn.textContent = originalText;
+                btn.classList.remove('failed');
             }, 2000);
         });
 }
-
-// Initialize all copy buttons
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click event listeners to all copy buttons
-    const copyButtons = document.querySelectorAll('.copy-btn, .footer-copy-btn');
-    copyButtons.forEach(button => {
-        button.addEventListener('click', copyContractAddress);
-    });
-});
 
 // Real-time token data simulation (replace with actual API calls)
 function updateTokenData() {
@@ -76,29 +65,5 @@ document.addEventListener('DOMContentLoaded', function() {
     const shareButtons = document.querySelectorAll('.share-btn');
     shareButtons.forEach(button => {
         button.addEventListener('click', shareMeme);
-    });
-});
-
-// Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navContainer = document.querySelector('.nav-container');
-
-    menuBtn.addEventListener('click', function() {
-        navContainer.classList.toggle('show');
-        menuBtn.textContent = navContainer.classList.contains('show') ? '✕' : '☰';
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('nav')) {
-            navContainer.classList.remove('show');
-            menuBtn.textContent = '☰';
-        }
-    });
-
-    // Prevent menu from closing when clicking inside
-    navContainer.addEventListener('click', function(event) {
-        event.stopPropagation();
     });
 }); 

@@ -303,18 +303,28 @@ nav {
     user-select: all;
 }
 
-.copy-btn {
+.copy-btn, .footer-copy-btn {
     background: var(--primary-purple);
     color: var(--accent-white);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.copy-btn:hover {
+.copy-btn:hover, .footer-copy-btn:hover {
     background: var(--accent-green);
+    transform: translateY(-2px);
+}
+
+.copy-btn.copied, .footer-copy-btn.copied {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+}
+
+.copy-btn.failed, .footer-copy-btn.failed {
+    background: #ff4444;
     transform: translateY(-2px);
 }
 
@@ -567,10 +577,21 @@ footer {
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .footer-copy-btn:hover {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+}
+
+.footer-copy-btn.copied {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+}
+
+.footer-copy-btn.failed {
+    background: #ff4444;
     transform: translateY(-2px);
 }
 
@@ -948,28 +969,19 @@ main {
 }
 
 /* Mobile Menu Styles */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--accent-white);
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-}
-
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
         position: absolute;
         right: 20px;
-        top: 20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .nav-container {
         display: none;
         position: absolute;
-        top: 70px;
+        top: var(--header-height);
         left: 0;
         width: 100%;
         background: var(--overlay-dark);
@@ -987,15 +999,16 @@ main {
         gap: 15px;
     }
 
-    .nav-link {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
     }
 
-    .social-links {
-        margin-top: 20px;
+    .social-btn, .buy-btn {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
     }
 }
 
