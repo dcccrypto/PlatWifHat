@@ -42,8 +42,8 @@ function shareMeme(event) {
     
     if (navigator.share) {
         navigator.share({
-            title: 'Check out this PlatWithHat meme! 🦆💪',
-            text: 'Found this awesome meme on PlatWithHat! #PLATWHAT #Solana',
+            title: 'Check out this PlatWifHat meme! 🦆💪',
+            text: 'Found this awesome meme on PlatWifHat! #PLATWHAT #Solana',
             url: window.location.origin + '/' + memeImg
         })
         .catch(error => console.log('Error sharing:', error));
