@@ -840,3 +840,109 @@ main {
         display: none;
     }
 }
+
+/* Meme Gallery Styles */
+.meme-gallery {
+    padding: 120px 20px 60px;
+    text-align: center;
+}
+
+.meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.meme-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid var(--primary-gold);
+    transition: transform 0.3s ease;
+}
+
+.meme-card:hover {
+    transform: translateY(-5px);
+}
+
+.meme-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.meme-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.9);
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.meme-card:hover .meme-overlay {
+    transform: translateY(0);
+}
+
+.share-btn {
+    background: var(--primary-purple);
+    color: var(--accent-white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.share-btn:hover {
+    background: var(--accent-green);
+}
+
+.meme-submission {
+    background: var(--overlay-dark);
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin: 60px auto;
+    max-width: 800px;
+    border: 2px solid var(--primary-gold);
+}
+
+.submit-btn {
+    display: inline-block;
+    background: var(--primary-purple);
+    color: var(--accent-white);
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    margin-top: 20px;
+    border: 2px solid var(--primary-gold);
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for meme gallery */
+@media (max-width: 768px) {
+    .meme-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .meme-card img {
+        height: 250px;
+    }
+    
+    .meme-overlay {
+        transform: translateY(0);
+        position: relative;
+    }
+}

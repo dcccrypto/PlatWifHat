@@ -45,3 +45,36 @@ function updateTokenData() {
 
 // Update data every 30 seconds
 setInterval(updateTokenData, 30000); 
+
+// Share meme functionality
+function shareMeme(event) {
+    const memeCard = event.target.closest('.meme-card');
+    const memeImg = memeCard.querySelector('img').src;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Check out this PlatWithHat meme! 🦆💪',
+            text: 'Found this awesome meme on PlatWithHat! #PLATWHAT #Solana',
+            url: memeImg
+        })
+        .catch(error => console.log('Error sharing:', error));
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const dummy = document.createElement('textarea');
+        document.body.appendChild(dummy);
+        dummy.value = memeImg;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        
+        alert('Meme URL copied to clipboard!');
+    }
+}
+
+// Initialize share buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const shareButtons = document.querySelectorAll('.share-btn');
+    shareButtons.forEach(button => {
+        button.addEventListener('click', shareMeme);
+    });
+}); 
