@@ -1043,3 +1043,112 @@ main {
         gap: 15px;
     }
 }
+
+/* Logo Section Styles */
+.logo-section {
+    background: linear-gradient(
+        135deg,
+        var(--overlay-dark),
+        rgba(138, 43, 226, 0.2)  /* Subtle purple glow */
+    );
+    padding: 40px 0;
+    margin-top: -1px; /* Remove any gap */
+    border-top: 2px solid var(--primary-purple);
+    border-bottom: 2px solid var(--primary-purple);
+    position: relative;
+}
+
+.logo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 215, 0, 0.05),  /* Subtle gold shimmer */
+        transparent
+    );
+    pointer-events: none;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.8);
+    border-radius: 15px;
+    border: 2px solid var(--primary-gold);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.logo-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+}
+
+.logo-item p {
+    color: var(--accent-white);
+    text-align: center;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.logo-item.locked {
+    opacity: 0.7;
+    position: relative;
+}
+
+.logo-item.locked::after {
+    content: '🔒';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Copy button states */
+.copy-btn.copied {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.copy-btn.failed {
+    background: #ff4444;
+    border-color: #ff4444;
+}
