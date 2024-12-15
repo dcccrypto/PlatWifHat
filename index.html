@@ -86,12 +86,28 @@
             <div class="section-wrapper">
                 <h2>🚀 CHART</h2>
                 <div class="chart-container">
+                    <style>
+                        #dexscreener-embed{
+                            position:relative;
+                            width:100%;
+                            padding-bottom:125%;
+                        }
+                        @media(min-width:1400px){
+                            #dexscreener-embed{
+                                padding-bottom:65%;
+                            }
+                        }
+                        #dexscreener-embed iframe{
+                            position:absolute;
+                            width:100%;
+                            height:100%;
+                            top:0;
+                            left:0;
+                            border:0;
+                        }
+                    </style>
                     <div id="dexscreener-embed">
-                        <iframe 
-                            src="https://dexscreener.com/solana/gxo7prfbrlbapw6yumedqhrd3mabg5tj7q23pd5ubfms"
-                            frameborder="0"
-                            allowfullscreen
-                        ></iframe>
+                        <iframe src="https://dexscreener.com/solana/Gxo7pRfbrLbapw6YUMEdQhRd3MabG5tJ7q23Pd5Ubfms?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"></iframe>
                     </div>
                 </div>
             </div>
